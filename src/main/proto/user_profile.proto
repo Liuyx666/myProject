@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package recommendation;
+
+option java_multiple_files = true;
+option java_package = "io.grpc.proto.recommendation";
+option java_outer_classname = "UserProfileProto";
+
+message UserProfile {
+    uint32 id = 1;
+    uint32 times = 2;
+    double mid_rating = 3;
+    double avg_rating = 4;
+    repeated uint32 seen_movies = 5;//for don't recommend repeatedly
+    repeated uint32 like_movies = 6;
+    repeated double like_rating = 7;//user's normalized rating(rating / avg_rating) to this liked movie
+}

@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package recommendation;
+
+service MovieRecommendation {
+  rpc recommendMovies (stream recRequest) returns (recReplay) {}
+}
+
+message recRequest {
+  uint32 userId = 1;
+  uint32 movieId = 2;
+  string record = 3;
+}
+
+message recReplay {
+  string movie_id = 1;
+}

@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package recommendation;
+
+option java_multiple_files = true;
+option java_package = "io.grpc.proto.recommendation";
+option java_outer_classname = "MovieProfileProto";
+
+// The greeting service definition.
+service MovieRecommendationForUser {
+  // Sends a greeting
+  rpc BaseOnUser (UserRequest) returns (stream MovieProfile) {}
+}
+
+// The request message containing the user's name.
+message UserRequest {
+  uint32 user_id = 1;
+  uint32 movie_num = 2;
+}
+
+message MovieProfile {
+  uint32 id = 1;
+  string title = 2;
+  string genres = 3;
+  double avg_rating = 4;
+  double std_dev = 5;
+  uint32 year = 6;
+  uint64 times = 7;
+
+  repeated uint32 tags = 8;
+}
